@@ -1,6 +1,9 @@
 package go_nounou
 
-import "math"
+import (
+	"fmt"
+	"math"
+)
 
 type Core struct {
 	hourlySalary  float64
@@ -31,8 +34,11 @@ func NewCore(hourlySalary, hoursPerWeek, daysPerWeek, dailyAllowances float64, w
 }
 
 func (c *Core) Normal() *Declaration {
+	fmt.Println("base salary: ", c.baseSalary*100)
+	salary := math.Ceil(c.baseSalary*100) / 100
+
 	return &Declaration{
-		Salary:     c.baseSalary,
+		Salary:     salary,
 		Hours:      uint(math.Round(c.hoursPerMonth)),
 		Days:       c.daysPerMonth,
 		Allowances: c.allowances,
