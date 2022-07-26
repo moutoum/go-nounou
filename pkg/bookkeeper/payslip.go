@@ -1,30 +1,35 @@
 package bookkeeper
 
 type Expenses struct {
-	TaxableCSG               float64
-	NonTaxableCSG            float64
-	SocialSecurity           float64
-	FNAL                     float64
-	CSA                      float64
-	ProfessionalTraining     float64
-	Pension                  float64
-	Providence               float64
-	UnemploymentInsurance    float64
-	SocialDialogContribution float64
+	TaxableCSG               Expense
+	NonTaxableCSG            Expense
+	SocialSecurity           Expense
+	FNAL                     Expense
+	CSA                      Expense
+	ProfessionalTraining     Expense
+	Pension                  Expense
+	Providence               Expense
+	UnemploymentInsurance    Expense
+	SocialDialogContribution Expense
+}
+
+type Expense struct {
+	Base   float64
+	Amount float64
 }
 
 func (e *Expenses) Total() float64 {
 	var total float64
-	total += e.TaxableCSG
-	total += e.NonTaxableCSG
-	total += e.SocialSecurity
-	total += e.FNAL
-	total += e.CSA
-	total += e.ProfessionalTraining
-	total += e.Pension
-	total += e.Providence
-	total += e.UnemploymentInsurance
-	total += e.SocialDialogContribution
+	total += e.TaxableCSG.Amount
+	total += e.NonTaxableCSG.Amount
+	total += e.SocialSecurity.Amount
+	total += e.FNAL.Amount
+	total += e.CSA.Amount
+	total += e.ProfessionalTraining.Amount
+	total += e.Pension.Amount
+	total += e.Providence.Amount
+	total += e.UnemploymentInsurance.Amount
+	total += e.SocialDialogContribution.Amount
 	return total
 }
 

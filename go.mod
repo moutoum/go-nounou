@@ -4,6 +4,7 @@ go 1.17
 
 require (
 	github.com/gen2brain/dlgs v0.0.0-20210324163825-f2c7498414a6
+	github.com/go-chi/chi/v5 v5.0.7
 	github.com/stretchr/testify v1.7.0
 	github.com/urfave/cli v1.22.5
 )

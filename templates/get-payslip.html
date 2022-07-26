@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payslip</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px 15px;
+            text-align: end;
+        }
+
+        .number {
+            font-family: "Courier New";
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Payslip</h1>
+    <table>
+        <thead>
+            <tr>
+                <td style="width: 200px" rowspan="2">Designation</td>
+                <td style="width: 200px" rowspan="2">Base</td>
+                <td colspan="2">Employee</td>
+                <td colspan="2">Employer</td>
+            </tr>
+            <tr>
+                <td>Rate</td>
+                <td>Amount</td>
+                <td>Rate</td>
+                <td>Amount</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Taxable CSG</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employee.TaxableCSG.Base }}</td>
+                <td class="number">{{ .EmployeeContributionShares.TaxableCSG }}</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employee.TaxableCSG.Amount }}</td>
+                <td class="number">{{ .EmployerContributionShares.TaxableCSG }}</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employer.TaxableCSG.Amount }}</td>
+            </tr>
+            <tr>
+                <td>Non Taxable CSG</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employee.NonTaxableCSG.Base }}</td>
+                <td class="number">{{ .EmployeeContributionShares.NonTaxableCSG }}</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employee.NonTaxableCSG.Amount }}</td>
+                <td class="number">{{ .EmployerContributionShares.NonTaxableCSG }}</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employer.NonTaxableCSG.Amount }}</td>
+            </tr>
+            <tr>
+                <td>Social Security</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employee.SocialSecurity.Base }}</td>
+                <td class="number">{{ .EmployeeContributionShares.SocialSecurity }}</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employee.SocialSecurity.Amount }}</td>
+                <td class="number">{{ .EmployerContributionShares.SocialSecurity }}</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employer.SocialSecurity.Amount }}</td>
+            </tr>
+            <tr>
+                <td>FNAL</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employee.FNAL.Base }}</td>
+                <td class="number">{{ .EmployeeContributionShares.FNAL }}</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employee.FNAL.Amount }}</td>
+                <td class="number">{{ .EmployerContributionShares.FNAL }}</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employer.FNAL.Amount }}</td>
+            </tr>
+            <tr>
+                <td>CSA</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employee.CSA.Base }}</td>
+                <td class="number">{{ .EmployeeContributionShares.CSA }}</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employee.CSA.Amount }}</td>
+                <td class="number">{{ .EmployerContributionShares.CSA }}</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employer.CSA.Amount }}</td>
+            </tr>
+            <tr>
+                <td>Professional Training</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employee.ProfessionalTraining.Base }}</td>
+                <td class="number">{{ .EmployeeContributionShares.ProfessionalTraining }}</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employee.ProfessionalTraining.Amount }}</td>
+                <td class="number">{{ .EmployerContributionShares.ProfessionalTraining }}</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employer.ProfessionalTraining.Amount }}</td>
+            </tr>
+            <tr>
+                <td>Pension</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employee.Pension.Base }}</td>
+                <td class="number">{{ .EmployeeContributionShares.Pension }}</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employee.Pension.Amount }}</td>
+                <td class="number">{{ .EmployerContributionShares.Pension }}</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employer.Pension.Amount }}</td>
+            </tr>
+            <tr>
+                <td>Providence</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employee.Providence.Base }}</td>
+                <td class="number">{{ .EmployeeContributionShares.Providence }}</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employee.Providence.Amount }}</td>
+                <td class="number">{{ .EmployerContributionShares.Providence }}</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employer.Providence.Amount }}</td>
+            </tr>
+            <tr>
+                <td>Unemployment Insurance</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employee.UnemploymentInsurance.Base }}</td>
+                <td class="number">{{ .EmployeeContributionShares.UnemploymentInsurance }}</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employee.UnemploymentInsurance.Amount }}</td>
+                <td class="number">{{ .EmployerContributionShares.UnemploymentInsurance }}</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employer.UnemploymentInsurance.Amount }}</td>
+            </tr>
+            <tr>
+                <td>Social Dialog Contribution</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employee.SocialDialogContribution.Base }}</td>
+                <td class="number">{{ .EmployeeContributionShares.SocialDialogContribution }}</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employee.SocialDialogContribution.Amount }}</td>
+                <td class="number">{{ .EmployerContributionShares.SocialDialogContribution }}</td>
+                <td class="number">{{ PrintEuros .PaySlip.Employer.SocialDialogContribution.Amount }}</td>
+            </tr>
+            <tr>
+                <td>Total Contributions</td>
+                <td></td>
+                <td></td>
+                <td class="number">{{ PrintEuros .PaySlip.Employee.Total }}</td>
+                <td></td>
+                <td class="number">{{ PrintEuros .PaySlip.Employer.Total }}</td>
+            </tr>
+            <tr>
+                <td>Gross</td>
+                <td class="number">{{ PrintEuros .GrossSalary }}</td>
+            </tr>
+            <tr>
+                <td>Net</td>
+                <td class="number">{{ PrintEuros .NetSalary }}</td>
+            </tr>
+            <tr>
+                <td>Daily allowances</td>
+                <td class="number">{{ PrintEuros .Allowances }}</td>
+            </tr>
+            <tr>
+                <td>Total</td>
+                <td class="number">{{ PrintEuros .Total }}</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

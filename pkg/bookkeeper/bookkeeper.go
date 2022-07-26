@@ -51,15 +51,15 @@ func (b *BookKeeper) NewPaySlip(workingDays uint) *PaySlip {
 
 func newExpenses(grossSalary float64, shares ContributionShares) Expenses {
 	return Expenses{
-		TaxableCSG:               (0.9825 * grossSalary) * shares.TaxableCSG,
-		NonTaxableCSG:            (0.9825 * grossSalary) * shares.NonTaxableCSG,
-		SocialSecurity:           grossSalary * shares.SocialSecurity,
-		FNAL:                     grossSalary * shares.FNAL,
-		CSA:                      grossSalary * shares.CSA,
-		ProfessionalTraining:     grossSalary * shares.ProfessionalTraining,
-		Pension:                  grossSalary * shares.Pension,
-		Providence:               grossSalary * shares.Providence,
-		UnemploymentInsurance:    grossSalary * shares.UnemploymentInsurance,
-		SocialDialogContribution: grossSalary * shares.SocialDialogContribution,
+		TaxableCSG:               Expense{Base: grossSalary * 0.9825, Amount: (0.9825 * grossSalary) * shares.TaxableCSG},
+		NonTaxableCSG:            Expense{Base: grossSalary * 0.9825, Amount: (0.9825 * grossSalary) * shares.NonTaxableCSG},
+		SocialSecurity:           Expense{Base: grossSalary, Amount: grossSalary * shares.SocialSecurity},
+		FNAL:                     Expense{Base: grossSalary, Amount: grossSalary * shares.FNAL},
+		CSA:                      Expense{Base: grossSalary, Amount: grossSalary * shares.CSA},
+		ProfessionalTraining:     Expense{Base: grossSalary, Amount: grossSalary * shares.ProfessionalTraining},
+		Pension:                  Expense{Base: grossSalary, Amount: grossSalary * shares.Pension},
+		Providence:               Expense{Base: grossSalary, Amount: grossSalary * shares.Providence},
+		UnemploymentInsurance:    Expense{Base: grossSalary, Amount: grossSalary * shares.UnemploymentInsurance},
+		SocialDialogContribution: Expense{Base: grossSalary, Amount: grossSalary * shares.SocialDialogContribution},
 	}
 }
