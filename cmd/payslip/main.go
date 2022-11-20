@@ -17,12 +17,12 @@ func main() {
 			&cli.Float64Flag{
 				Name:  "hourly-gross-salary",
 				Usage: "Gross salary per hour",
-				Value: 4.92,
+				Value: 4.41,
 			},
 			&cli.Float64Flag{
 				Name:  "daily-allowances",
 				Usage: "Daily allowances at babysitter house",
-				Value: 4.60,
+				Value: 3.55,
 			},
 			&cli.Float64Flag{
 				Name:  "hours-per-week",

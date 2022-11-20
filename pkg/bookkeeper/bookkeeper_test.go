@@ -1,6 +1,7 @@
 package bookkeeper
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -45,4 +46,21 @@ func TestBookKeeper_NewPaySlip(t *testing.T) {
 	assert.InDelta(t, 164.6, payslip.Hours, 0.1)
 	assert.Equal(t, 73.6, payslip.Allowances)
 	assert.InDelta(t, 632.24, payslip.NetSalary, 0.01)
+}
+
+func TestToto(t *testing.T) {
+	ex := newExpenses(22.48, ContributionShares{
+		TaxableCSG:               0.029,
+		NonTaxableCSG:            0.068,
+		SocialSecurity:           0.073,
+		FNAL:                     0,
+		CSA:                      0,
+		ProfessionalTraining:     0,
+		Pension:                  0.0401,
+		Providence:               0.0104,
+		UnemploymentInsurance:    0,
+		SocialDialogContribution: 0,
+	})
+
+	fmt.Printf("Brut: 22.48, Employee Taxes: %f, Net: %f", ex.Total(), 22.48-ex.Total())
 }

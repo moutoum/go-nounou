@@ -11,7 +11,7 @@ var (
 		CSA:                      0.003,
 		ProfessionalTraining:     0.0055,
 		Pension:                  0.0601,
-		Providence:               0.0205,
+		Providence:               0.0215,
 		UnemploymentInsurance:    0.0405,
 		SocialDialogContribution: 0.00016,
 	}
@@ -24,7 +24,7 @@ var (
 		CSA:                      0,
 		ProfessionalTraining:     0,
 		Pension:                  0.0401,
-		Providence:               0.0112,
+		Providence:               0.0104,
 		UnemploymentInsurance:    0,
 		SocialDialogContribution: 0,
 	}
